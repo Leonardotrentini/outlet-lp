@@ -2,14 +2,14 @@
 
 Landing pages estáticas WK Outlet (grupos e vendedores), prontas para [Vercel](https://vercel.com).
 
-## URLs no ar
+## URLs no ar (use estas nos anúncios)
 
-| Uso | Caminho |
-|-----|---------|
-| Raiz do site | `/` → `index.html` |
-| Campanha grupos | `/grupos` |
-| Campanha vendedores (rotator WhatsApp) | `/vendedores` |
-| Arquivos diretos | `/lp-outletgrupos.html`, `/lpoutletvendedores2.html` |
+| Página | URL |
+|--------|-----|
+| Grupo VIP | `https://SEU-DOMINIO/grupos` |
+| Catálogo / vendedores (rotator WhatsApp) | `https://SEU-DOMINIO/vendedores` |
+
+A raiz `/` redireciona para `/grupos`. Os ficheiros `.html` originais continuam acessíveis pelos nomes (`/lp-outletgrupos.html`, `/lpoutletvendedores2.html`).
 
 ## Deploy na Vercel
 
@@ -20,18 +20,22 @@ Landing pages estáticas WK Outlet (grupos e vendedores), prontas para [Vercel](
 5. **Install Command:** deixe em branco (não há dependências npm obrigatórias).
 6. Clique em **Deploy**.
 
-O ficheiro `vercel.json` define rewrites (`/grupos`, `/vendedores`), cabeçalhos de segurança e `Content-Type` correto para os assets sem extensão (CSS e scripts guardados pelo “Save as” do browser).
+O `vercel.json` define redirects, rewrites (`/grupos`, `/vendedores`), cabeçalhos de segurança e `Content-Type` para assets sem extensão correta.
 
 ## Testar no computador
 
 ```bash
 cd Desktop/lp-outlet
-python -m http.server 8889
+npx vercel dev
 ```
 
-Abra: `http://127.0.0.1:8889/` (o servidor Python não aplica `vercel.json`; use `npx vercel dev` para espelhar a Vercel).
+Ou só ficheiros estáticos (sem rewrites): `python -m http.server 8889` e abra os `.html` pelos nomes.
 
 ## Alterar links de WhatsApp
 
 - **Grupos:** link do botão em `lp-outletgrupos.html`.
 - **Vendedores:** array `whatsappLinks` no script no final de `lpoutletvendedores2.html`.
+
+## Mudar a página padrão da raiz
+
+Em `vercel.json`, altere o `destination` do redirect de `/` (hoje `/grupos`) para `/vendedores` se preferir.

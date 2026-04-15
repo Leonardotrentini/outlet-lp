@@ -1,5 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/grupos",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     { "source": "/grupos", "destination": "/lp-outletgrupos.html" },
     { "source": "/vendedores", "destination": "/lpoutletvendedores2.html" }
