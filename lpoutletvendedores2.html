@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)file:///C:/Users/Leonardo%20trentini/Downloads/wk-atacado-rotator.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="theme-color" content="#0C0C0C">
+  <title>WK Multimarcas — Atacado de Roupas Masculinas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./lpoutletvendedores2_files/css2" rel="stylesheet">
+  
+  <!-- Meta Pixel Code -->
+  <script src="./lpoutletvendedores2_files/881981060699779" async=""></script><script async="" src="./lpoutletvendedores2_files/fbevents.js.download"></script><script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '881981060699779');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=881981060699779&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  
+  <style>
+:root {
+  --gold: #C8922A;
+  --gold-light: #E8B84B;
+  --dark: #0C0C0C;
+  --off-white: #F2EDE4;
+  --muted: #888880;
+  --border: rgba(200,146,42,0.18);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--dark);
+  color: var(--off-white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 5vw;
+  background: rgba(12,12,12,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 16px 4vw;
+  }
+}
+
+.nav-logo img {
+  height: 150px;
+  width: auto;
+  display: block;
+  max-width: 540px;
+}
+
+@media (max-width: 768px) {
+  .nav-logo img {
+    height: 120px;
+    max-width: 450px;
+  }
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 220px 6vw 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(200,146,42,0.15), transparent 70%);
+  opacity: 0.4;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 920px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  color: var(--gold-light);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@media (max-width: 768px) {
+  .badge {
+    font-size: 11px;
+    padding: 8px 16px;
+    margin-bottom: 30px;
+    letter-spacing: 0.8px;
+  }
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.hero h1 .highlight {
+  color: var(--gold-light);
+  display: block;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  line-height: 1.6;
+  color: var(--muted);
+  margin-bottom: 50px;
+  animation: fadeInUp 0.8s ease-out 0.4s backwards;
+}
+
+.hero-subtitle .bold {
+  color: var(--off-white);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 35px;
+  }
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 20px 50px;
+  background: var(--gold);
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease-out 0.6s backwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.cta-button:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(200,146,42,0.3);
+}
+
+.cta-button:hover::before {
+  transform: translateX(100%);
+}
+
+@media (max-width: 768px) {
+  .cta-button {
+    padding: 18px 35px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+/* STATS */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 60px;
+  max-width: 1000px;
+  margin: 80px auto 0;
+  padding: 0 6vw;
+  animation: fadeInUp 0.8s ease-out 0.8s backwards;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 900;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.stat-label {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .stats {
+    gap: 40px;
+    margin-top: 60px;
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+  
+  .hero {
+    padding: 180px 5vw 60px;
+  }
+  
+  .stat-number {
+    font-size: 3.5rem;
+  }
+  
+  .stat-label {
+    font-size: 12px;
+    letter-spacing: 1.2px;
+  }
+}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-logo">
+      <img src="./lpoutletvendedores2_files/image-32.jpg" alt="WK Multimarcas">
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="badge">
+        🇧🇷 BR &nbsp; ATACADO PARA TODO O BRASIL
+      </div>
+      
+      <h1>
+        COMPRE JÁ DIRETO
+        <span class="highlight">DA FÁBRICA, ALTA MARGEM DE LUCRO NA REVENDA!</span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        Aqui você encontra as melhores peças do mercado, com 
+        <span class="bold">alta qualidade e preço justo</span>, garantindo sucesso na revenda.
+      </p>
+      
+      <a href="file:///C:/Users/Leonardo%20trentini/Downloads/wk-atacado-rotator.html#" id="whatsappButton" class="cta-button">
+        SOLICITAR CATÁLOGO AGORA! →
+      </a>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-number">10</span>
+        <span class="stat-label">Peças mínimo de início</span>
+      </div>
+      
+      <div class="stat">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Atacado para lojistas</span>
+      </div>
+      
+      <div class="stat">
+        <span class="stat-number">BR</span>
+        <span class="stat-label">🇧🇷<br>Entrega para todo Brasil</span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Link Rotator - Distribui cliques igualmente entre os links
+    const whatsappLinks = [
+      'https://wa.me/5511910532881?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20queria%20comprar%20no%20atacado!',
+      'https://wa.me/5511934677186?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20gostaria%20e%20comprar%20no%20atacado!'
+    ];
+    
+    // Pega o índice atual do localStorage (para persistir entre reloads)
+    let currentIndex = parseInt(localStorage.getItem('wkRotatorIndex') || '0');
+    
+    document.getElementById('whatsappButton').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Redireciona para o link atual
+      window.location.href = whatsappLinks[currentIndex];
+      
+      // Atualiza o índice para o próximo link
+      currentIndex = (currentIndex + 1) % whatsappLinks.length;
+      localStorage.setItem('wkRotatorIndex', currentIndex);
+    });
+  </script>
+
+</body></html>
