@@ -155,7 +155,7 @@ nav {
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(200, 146, 42, 0.55);
   border-radius: 50px;
   font-size: clamp(10px, 2.2vmin, 12px);
   font-weight: 500;
@@ -173,12 +173,18 @@ nav {
   letter-spacing: -0.02em;
   margin-bottom: 0;
   text-transform: uppercase;
+  color: var(--off-white);
   animation: fadeInUp 0.45s ease-out 0.05s both;
 }
 
 .hero h1 .highlight {
   color: var(--gold-light);
-  display: block;
+  display: inline;
+}
+
+.hero h1 .headline-end {
+  color: var(--off-white);
+  display: inline;
 }
 
 .hero-subtitle {
@@ -192,13 +198,14 @@ nav {
 
 .hero-subtitle .bold {
   color: var(--off-white);
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .cta-button {
   display: inline-block;
   padding: clamp(12px, 2.2vmin, 18px) clamp(20px, 4vmin, 44px);
-  background: var(--gold);
+  border-radius: 4px;
+  background: #CD9532;
   color: var(--dark);
   text-decoration: none;
   font-weight: 700;
@@ -303,12 +310,12 @@ nav {
     <div class="hero-bg"></div>
     <div class="hero-content">
       <div class="badge">
-        🇧🇷 BR &nbsp; ATACADO PARA TODO O BRASIL
+        BR BR ATACADO PARA TODO O BRASIL
       </div>
       
       <h1>
-        COMPRE JÁ DIRETO
-        <span class="highlight">DA FÁBRICA, ALTA MARGEM DE LUCRO NA REVENDA!</span>
+        COMPRE JÁ DIRETO<br>
+        <span class="highlight">DA FÁBRICA, ALTA MARGEM DE LUCRO NA</span><span class="headline-end">REVENDA!</span>
       </h1>
       
       <p class="hero-subtitle">
