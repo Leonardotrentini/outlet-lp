@@ -17,6 +17,7 @@
   --off-white: #F2EDE4;
   --muted: #888880;
   --border: rgba(200,146,42,0.18);
+  --nav-logo-h: clamp(88px, 16vw, 128px);
 }
 
 @font-face {
@@ -62,6 +63,7 @@
 
 html {
   height: 100%;
+  overflow: hidden;
 }
 
 *, *::before, *::after {
@@ -75,7 +77,9 @@ body {
   color: var(--off-white);
   font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   font-weight: 300;
-  overflow-x: hidden;
+  overflow: hidden;
+  margin: 0;
+  min-height: 100dvh;
 }
 
 /* NAV */
@@ -100,31 +104,26 @@ nav {
 }
 
 .nav-logo img {
-  height: clamp(110px, 22vw, 136px);
+  height: var(--nav-logo-h);
   width: auto;
   display: block;
   max-width: min(92vw, 500px);
 }
 
-@media (max-width: 768px) {
-  .nav-logo img {
-    height: clamp(96px, 26vw, 112px);
-    max-width: 450px;
-  }
-}
-
-/* HERO — como antes (centrado), só um pouco mais compacto; sem space-between */
+/* Uma tela, stats em 3 colunas em baixo */
 .hero {
-  min-height: 100vh;
   min-height: 100dvh;
+  height: 100dvh;
+  max-height: 100dvh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: space-between;
   text-align: center;
-  padding: clamp(185px, 38vw, 210px) 6vw clamp(52px, 9vw, 72px);
+  padding: calc(var(--nav-logo-h) + 20px) 12px max(8px, env(safe-area-inset-bottom, 0px));
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .hero-bg {
@@ -139,39 +138,40 @@ nav {
   position: relative;
   z-index: 1;
   max-width: 920px;
+  width: 100%;
+  margin: 0 auto;
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 1.8vmin, 14px);
+  overflow: hidden;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 18px;
+  padding: 8px 16px;
   border: 1px solid var(--border);
   border-radius: 50px;
-  font-size: 12px;
+  font-size: clamp(10px, 2.2vmin, 12px);
   font-weight: 500;
-  letter-spacing: 1.2px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 28px;
+  margin-bottom: 0;
   color: var(--gold-light);
   animation: fadeInUp 0.45s ease-out;
 }
 
-@media (max-width: 768px) {
-  .badge {
-    font-size: 11px;
-    padding: 8px 16px;
-    margin-bottom: 22px;
-    letter-spacing: 0.8px;
-  }
-}
-
 .hero h1 {
-  font-size: clamp(2.1rem, 7.2vw, 4.75rem);
+  font-size: clamp(1.35rem, 5.5vmin, 4.5rem);
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.08;
   letter-spacing: -0.02em;
-  margin-bottom: 22px;
+  margin-bottom: 0;
   text-transform: uppercase;
   animation: fadeInUp 0.45s ease-out 0.05s both;
 }
@@ -182,11 +182,12 @@ nav {
 }
 
 .hero-subtitle {
-  font-size: clamp(0.95rem, 2.4vw, 1.28rem);
-  line-height: 1.55;
+  font-size: clamp(0.82rem, 2.2vmin, 1.2rem);
+  line-height: 1.4;
   color: var(--muted);
-  margin-bottom: 38px;
+  margin-bottom: 0;
   animation: fadeInUp 0.45s ease-out 0.1s both;
+  max-width: 36em;
 }
 
 .hero-subtitle .bold {
@@ -194,23 +195,15 @@ nav {
   font-weight: 500;
 }
 
-@media (max-width: 768px) {
-  .hero-subtitle {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 28px;
-  }
-}
-
 .cta-button {
   display: inline-block;
-  padding: 18px 44px;
+  padding: clamp(12px, 2.2vmin, 18px) clamp(20px, 4vmin, 44px);
   background: var(--gold);
   color: var(--dark);
   text-decoration: none;
   font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 1px;
+  font-size: clamp(12px, 2.4vmin, 15px);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   border: none;
   cursor: pointer;
@@ -239,46 +232,41 @@ nav {
   transform: translateX(100%);
 }
 
-@media (max-width: 768px) {
-  .cta-button {
-    padding: 16px 32px;
-    font-size: 14px;
-    width: 100%;
-    max-width: 320px;
-  }
-}
-
-/* STATS */
+/* STATS — sempre 3 colunas lado a lado em baixo */
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: clamp(32px, 8vw, 52px);
-  max-width: 1000px;
-  margin: clamp(48px, 10vw, 64px) auto 0;
-  padding: 0 6vw;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(4px, 1.5vmin, 24px);
+  width: 100%;
+  max-width: min(1000px, 100%);
+  margin: 0;
+  padding: 8px 4px 4px;
+  flex-shrink: 0;
+  align-self: center;
   animation: fadeInUp 0.45s ease-out 0.2s both;
 }
 
 .stat {
   text-align: center;
+  min-width: 0;
 }
 
 .stat-number {
-  font-size: clamp(2.45rem, 5.8vw, 3.85rem);
+  font-size: clamp(1.35rem, 5vmin, 3.5rem);
   font-weight: 900;
   color: var(--gold-light);
   line-height: 1;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
   display: block;
 }
 
 .stat-label {
-  font-size: 12px;
+  font-size: clamp(8px, 1.65vmin, 12px);
   font-weight: 400;
-  letter-spacing: 1.2px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
-  line-height: 1.35;
+  line-height: 1.2;
 }
 
 @keyframes fadeInUp {
@@ -291,24 +279,15 @@ nav {
 }
 
 @media (max-width: 768px) {
-  .stats {
-    gap: 36px;
-    margin-top: 44px;
-    grid-template-columns: 1fr;
-    max-width: 300px;
+  :root {
+    --nav-logo-h: clamp(56px, 17vw, 88px);
   }
 
-  .hero {
-    padding: clamp(165px, 42vw, 188px) 5vw 48px;
-  }
-
-  .stat-number {
-    font-size: clamp(2.75rem, 11vw, 3.35rem);
-  }
-
-  .stat-label {
-    font-size: 12px;
-    letter-spacing: 1.2px;
+  .cta-button {
+    padding: 14px 28px;
+    font-size: 13px;
+    width: 100%;
+    max-width: 320px;
   }
 }
   </style>
