@@ -17,8 +17,6 @@
   --off-white: #F2EDE4;
   --muted: #888880;
   --border: rgba(200,146,42,0.18);
-  --nav-logo-h: clamp(44px, 11vw, 96px);
-  --hero-pad-top: calc(var(--nav-logo-h) + 14px);
 }
 
 @font-face {
@@ -63,10 +61,7 @@
 }
 
 html {
-  overflow: hidden;
-  height: 100svh;
-  max-height: 100svh;
-  overscroll-behavior: none;
+  height: 100%;
 }
 
 *, *::before, *::after {
@@ -80,11 +75,7 @@ body {
   color: var(--off-white);
   font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   font-weight: 300;
-  overflow: hidden;
-  height: 100%;
-  max-height: 100%;
-  min-height: 0;
-  overscroll-behavior: none;
+  overflow-x: hidden;
 }
 
 /* NAV */
@@ -97,32 +88,43 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 3vw;
+  padding: 16px 5vw;
   background: rgba(12,12,12,0.97);
   border-bottom: 1px solid var(--border);
 }
 
-.nav-logo img {
-  height: var(--nav-logo-h);
-  width: auto;
-  display: block;
-  max-width: min(92vw, 420px);
+@media (max-width: 768px) {
+  nav {
+    padding: 12px 4vw;
+  }
 }
 
-/* HERO — uma viewport, sem scroll */
+.nav-logo img {
+  height: clamp(110px, 22vw, 136px);
+  width: auto;
+  display: block;
+  max-width: min(92vw, 500px);
+}
+
+@media (max-width: 768px) {
+  .nav-logo img {
+    height: clamp(96px, 26vw, 112px);
+    max-width: 450px;
+  }
+}
+
+/* HERO — como antes (centrado), só um pouco mais compacto; sem space-between */
 .hero {
-  height: 100%;
-  max-height: 100%;
-  min-height: 0;
-  padding: var(--hero-pad-top) 3vw max(4px, env(safe-area-inset-bottom, 0px));
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   text-align: center;
+  padding: clamp(185px, 38vw, 210px) 6vw clamp(52px, 9vw, 72px);
   position: relative;
   overflow: hidden;
-  box-sizing: border-box;
 }
 
 .hero-bg {
@@ -137,43 +139,41 @@ nav {
   position: relative;
   z-index: 1;
   max-width: 920px;
-  width: 100%;
-  flex: 1 1 0;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(2px, 1vmin, 8px);
-  overflow: hidden;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 3px 10px;
+  gap: 8px;
+  padding: 9px 18px;
   border: 1px solid var(--border);
   border-radius: 50px;
-  font-size: clamp(8px, 1.6vmin, 11px);
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  margin-bottom: 0;
+  margin-bottom: 28px;
   color: var(--gold-light);
   animation: fadeInUp 0.45s ease-out;
-  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .badge {
+    font-size: 11px;
+    padding: 8px 16px;
+    margin-bottom: 22px;
+    letter-spacing: 0.8px;
+  }
 }
 
 .hero h1 {
-  font-size: clamp(0.72rem, 3.4vmin, 1.85rem);
+  font-size: clamp(2.1rem, 7.2vw, 4.75rem);
   font-weight: 900;
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: -0.02em;
-  margin-bottom: 0;
+  margin-bottom: 22px;
   text-transform: uppercase;
   animation: fadeInUp 0.45s ease-out 0.05s both;
-  flex-shrink: 1;
 }
 
 .hero h1 .highlight {
@@ -182,14 +182,11 @@ nav {
 }
 
 .hero-subtitle {
-  font-size: clamp(0.62rem, 1.75vmin, 0.88rem);
-  line-height: 1.28;
+  font-size: clamp(0.95rem, 2.4vw, 1.28rem);
+  line-height: 1.55;
   color: var(--muted);
-  margin-bottom: 0;
+  margin-bottom: 38px;
   animation: fadeInUp 0.45s ease-out 0.1s both;
-  flex-shrink: 1;
-  max-height: 4.2em;
-  overflow: hidden;
 }
 
 .hero-subtitle .bold {
@@ -197,15 +194,23 @@ nav {
   font-weight: 500;
 }
 
+@media (max-width: 768px) {
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 28px;
+  }
+}
+
 .cta-button {
   display: inline-block;
-  padding: clamp(8px, 1.8vmin, 14px) clamp(16px, 3.5vmin, 36px);
+  padding: 18px 44px;
   background: var(--gold);
   color: var(--dark);
   text-decoration: none;
   font-weight: 700;
-  font-size: clamp(10px, 1.85vmin, 13px);
-  letter-spacing: 0.04em;
+  font-size: 15px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   border: none;
   cursor: pointer;
@@ -213,7 +218,6 @@ nav {
   animation: fadeInUp 0.45s ease-out 0.15s both;
   position: relative;
   overflow: hidden;
-  flex-shrink: 0;
 }
 
 .cta-button::before {
@@ -237,6 +241,8 @@ nav {
 
 @media (max-width: 768px) {
   .cta-button {
+    padding: 16px 32px;
+    font-size: 14px;
     width: 100%;
     max-width: 320px;
   }
@@ -245,13 +251,11 @@ nav {
 /* STATS */
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(2px, 1vmin, 12px);
-  max-width: min(1000px, 100%);
-  margin: 0;
-  padding: 0 1vw;
-  width: 100%;
-  flex-shrink: 0;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: clamp(32px, 8vw, 52px);
+  max-width: 1000px;
+  margin: clamp(48px, 10vw, 64px) auto 0;
+  padding: 0 6vw;
   animation: fadeInUp 0.45s ease-out 0.2s both;
 }
 
@@ -260,21 +264,21 @@ nav {
 }
 
 .stat-number {
-  font-size: clamp(0.85rem, 3.2vmin, 1.5rem);
+  font-size: clamp(2.45rem, 5.8vw, 3.85rem);
   font-weight: 900;
   color: var(--gold-light);
   line-height: 1;
-  margin-bottom: 2px;
+  margin-bottom: 10px;
   display: block;
 }
 
 .stat-label {
-  font-size: clamp(7px, 1.35vmin, 10px);
+  font-size: 12px;
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   color: var(--muted);
-  line-height: 1.15;
+  line-height: 1.35;
 }
 
 @keyframes fadeInUp {
@@ -287,21 +291,24 @@ nav {
 }
 
 @media (max-width: 768px) {
-  :root {
-    --nav-logo-h: clamp(36px, 10vw, 56px);
-    --hero-pad-top: calc(var(--nav-logo-h) + 10px);
+  .stats {
+    gap: 36px;
+    margin-top: 44px;
+    grid-template-columns: 1fr;
+    max-width: 300px;
   }
-}
 
-@media (max-height: 700px) {
-  :root {
-    --nav-logo-h: clamp(32px, 9vh, 48px);
+  .hero {
+    padding: clamp(165px, 42vw, 188px) 5vw 48px;
   }
-  .hero h1 {
-    font-size: clamp(0.65rem, 3vmin, 1.35rem);
-  }
+
   .stat-number {
-    font-size: clamp(0.75rem, 2.8vmin, 1.2rem);
+    font-size: clamp(2.75rem, 11vw, 3.35rem);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    letter-spacing: 1.2px;
   }
 }
   </style>
@@ -380,22 +387,14 @@ nav {
   src="https://www.facebook.com/tr?id=881981060699779&ev=PageView&noscript=1"
   /></noscript>
   <script>
-    // Link Rotator - Distribui cliques igualmente entre os links
     const whatsappLinks = [
       'https://wa.me/5511910532881?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20queria%20comprar%20no%20atacado!',
       'https://wa.me/5511934677186?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20gostaria%20e%20comprar%20no%20atacado!'
     ];
-    
-    // Pega o índice atual do localStorage (para persistir entre reloads)
     let currentIndex = parseInt(localStorage.getItem('wkRotatorIndex') || '0');
-    
     document.getElementById('whatsappButton').addEventListener('click', function(e) {
       e.preventDefault();
-      
-      // Redireciona para o link atual
       window.location.href = whatsappLinks[currentIndex];
-      
-      // Atualiza o índice para o próximo link
       currentIndex = (currentIndex + 1) % whatsappLinks.length;
       localStorage.setItem('wkRotatorIndex', currentIndex);
     });
