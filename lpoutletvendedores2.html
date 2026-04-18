@@ -7,7 +7,8 @@
   <meta name="description" content="Atacado de roupas masculinas WK Multimarcas. Compre direto da fábrica com alta margem na revenda. Entrega para todo o Brasil.">
   <title>WK Multimarcas — Atacado de Roupas Masculinas</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="/lpoutletvendedores2_files/image-32.jpg">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2">
+  <link rel="preload" as="image" href="/lpoutletvendedores2_files/image-32.jpg" fetchpriority="high">
   <style>
 :root {
   --gold: #C8922A;
@@ -16,9 +17,10 @@
   --off-white: #F2EDE4;
   --muted: #888880;
   --border: rgba(200,146,42,0.18);
+  --nav-logo-h: clamp(44px, 11vw, 96px);
+  --hero-pad-top: calc(var(--nav-logo-h) + 14px);
 }
 
-/* DM Sans — apenas latin (menos pedidos que o CSS completo do Google Fonts) */
 @font-face {
   font-family: 'DM Sans';
   font-style: normal;
@@ -60,6 +62,13 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+html {
+  overflow: hidden;
+  height: 100svh;
+  max-height: 100svh;
+  overscroll-behavior: none;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -69,9 +78,13 @@
 body {
   background: var(--dark);
   color: var(--off-white);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   font-weight: 300;
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  overscroll-behavior: none;
 }
 
 /* NAV */
@@ -84,42 +97,32 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 5vw;
+  padding: 6px 3vw;
   background: rgba(12,12,12,0.97);
   border-bottom: 1px solid var(--border);
 }
 
-@media (max-width: 768px) {
-  nav {
-    padding: 16px 4vw;
-  }
-}
-
 .nav-logo img {
-  height: 150px;
+  height: var(--nav-logo-h);
   width: auto;
   display: block;
-  max-width: 540px;
+  max-width: min(92vw, 420px);
 }
 
-@media (max-width: 768px) {
-  .nav-logo img {
-    height: 120px;
-    max-width: 450px;
-  }
-}
-
-/* HERO */
+/* HERO — uma viewport, sem scroll */
 .hero {
-  min-height: 100vh;
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  padding: var(--hero-pad-top) 3vw max(4px, env(safe-area-inset-bottom, 0px));
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
-  padding: 220px 6vw 80px;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .hero-bg {
@@ -134,41 +137,43 @@ nav {
   position: relative;
   z-index: 1;
   max-width: 920px;
+  width: 100%;
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2px, 1vmin, 8px);
+  overflow: hidden;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
+  gap: 4px;
+  padding: 3px 10px;
   border: 1px solid var(--border);
   border-radius: 50px;
-  font-size: 13px;
+  font-size: clamp(8px, 1.6vmin, 11px);
   font-weight: 500;
-  letter-spacing: 1.2px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 40px;
+  margin-bottom: 0;
   color: var(--gold-light);
   animation: fadeInUp 0.45s ease-out;
-}
-
-@media (max-width: 768px) {
-  .badge {
-    font-size: 11px;
-    padding: 8px 16px;
-    margin-bottom: 30px;
-    letter-spacing: 0.8px;
-  }
+  flex-shrink: 0;
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-size: clamp(0.72rem, 3.4vmin, 1.85rem);
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.05;
   letter-spacing: -0.02em;
-  margin-bottom: 30px;
+  margin-bottom: 0;
   text-transform: uppercase;
   animation: fadeInUp 0.45s ease-out 0.05s both;
+  flex-shrink: 1;
 }
 
 .hero h1 .highlight {
@@ -177,11 +182,14 @@ nav {
 }
 
 .hero-subtitle {
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  line-height: 1.6;
+  font-size: clamp(0.62rem, 1.75vmin, 0.88rem);
+  line-height: 1.28;
   color: var(--muted);
-  margin-bottom: 50px;
+  margin-bottom: 0;
   animation: fadeInUp 0.45s ease-out 0.1s both;
+  flex-shrink: 1;
+  max-height: 4.2em;
+  overflow: hidden;
 }
 
 .hero-subtitle .bold {
@@ -189,23 +197,15 @@ nav {
   font-weight: 500;
 }
 
-@media (max-width: 768px) {
-  .hero-subtitle {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 35px;
-  }
-}
-
 .cta-button {
   display: inline-block;
-  padding: 20px 50px;
+  padding: clamp(8px, 1.8vmin, 14px) clamp(16px, 3.5vmin, 36px);
   background: var(--gold);
   color: var(--dark);
   text-decoration: none;
   font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 1px;
+  font-size: clamp(10px, 1.85vmin, 13px);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   border: none;
   cursor: pointer;
@@ -213,6 +213,7 @@ nav {
   animation: fadeInUp 0.45s ease-out 0.15s both;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .cta-button::before {
@@ -236,8 +237,6 @@ nav {
 
 @media (max-width: 768px) {
   .cta-button {
-    padding: 18px 35px;
-    font-size: 14px;
     width: 100%;
     max-width: 320px;
   }
@@ -246,13 +245,13 @@ nav {
 /* STATS */
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 60px;
-  max-width: 1000px;
-  margin: 80px auto 0;
-  padding: 0 6vw;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 400px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2px, 1vmin, 12px);
+  max-width: min(1000px, 100%);
+  margin: 0;
+  padding: 0 1vw;
+  width: 100%;
+  flex-shrink: 0;
   animation: fadeInUp 0.45s ease-out 0.2s both;
 }
 
@@ -261,21 +260,21 @@ nav {
 }
 
 .stat-number {
-  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-size: clamp(0.85rem, 3.2vmin, 1.5rem);
   font-weight: 900;
   color: var(--gold-light);
   line-height: 1;
-  margin-bottom: 12px;
+  margin-bottom: 2px;
   display: block;
 }
 
 .stat-label {
-  font-size: 13px;
+  font-size: clamp(7px, 1.35vmin, 10px);
   font-weight: 400;
-  letter-spacing: 1.5px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
-  line-height: 1.4;
+  line-height: 1.15;
 }
 
 @keyframes fadeInUp {
@@ -288,24 +287,21 @@ nav {
 }
 
 @media (max-width: 768px) {
-  .stats {
-    gap: 40px;
-    margin-top: 60px;
-    grid-template-columns: 1fr;
-    max-width: 300px;
+  :root {
+    --nav-logo-h: clamp(36px, 10vw, 56px);
+    --hero-pad-top: calc(var(--nav-logo-h) + 10px);
   }
-  
-  .hero {
-    padding: 180px 5vw 60px;
+}
+
+@media (max-height: 700px) {
+  :root {
+    --nav-logo-h: clamp(32px, 9vh, 48px);
   }
-  
+  .hero h1 {
+    font-size: clamp(0.65rem, 3vmin, 1.35rem);
+  }
   .stat-number {
-    font-size: 3.5rem;
-  }
-  
-  .stat-label {
-    font-size: 12px;
-    letter-spacing: 1.2px;
+    font-size: clamp(0.75rem, 2.8vmin, 1.2rem);
   }
 }
   </style>
