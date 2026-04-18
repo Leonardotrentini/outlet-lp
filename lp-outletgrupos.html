@@ -147,12 +147,11 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: clamp(6px, 2vmin, 16px);
+  justify-content: flex-start;
   overflow: hidden;
 }
 
-/* Ocupa o espaço entre badge e CTA; título fica centrado nessa faixa */
+/* Ordem: badge → headline (colados) → subheadline → CTA; bloco centrado na faixa */
 .hero-middle {
   flex: 1 1 0;
   min-height: 0;
@@ -161,7 +160,16 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(4px, 1.8vmin, 14px);
+  gap: clamp(10px, 2.5vmin, 18px);
+}
+
+/* Badge imediatamente acima do H1 (sem vão entre os dois) */
+.hero-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
 }
 
 .badge {
@@ -176,7 +184,7 @@ nav {
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 0;
+  margin: 0;
   color: var(--gold-light);
   animation: fadeInUp 0.45s ease-out;
 }
@@ -186,7 +194,7 @@ nav {
   font-weight: 900;
   line-height: 1.08;
   letter-spacing: -0.02em;
-  margin-bottom: 0;
+  margin: 0;
   text-transform: uppercase;
   color: var(--off-white);
   animation: fadeInUp 0.45s ease-out 0.05s both;
@@ -206,7 +214,7 @@ nav {
   font-size: clamp(0.82rem, 2.2vmin, 1.2rem);
   line-height: 1.4;
   color: var(--muted);
-  margin-bottom: 0;
+  margin: 0;
   animation: fadeInUp 0.45s ease-out 0.1s both;
   max-width: 36em;
 }
@@ -326,24 +334,26 @@ nav {
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <div class="badge">
-        BR BR ATACADO PARA TODO O BRASIL
-      </div>
-
       <div class="hero-middle">
-        <h1>
-          COMPRE JÁ DIRETO<br>
-          <span class="highlight">DA FÁBRICA, ALTA MARGEM DE LUCRO NA</span><span class="headline-end"> REVENDA!</span>
-        </h1>
+        <div class="hero-head">
+          <div class="badge">
+            BR BR ATACADO PARA TODO O BRASIL
+          </div>
+
+          <h1>
+            COMPRE JÁ DIRETO<br>
+            <span class="highlight">DA FÁBRICA, ALTA MARGEM DE LUCRO NA</span><span class="headline-end"> REVENDA!</span>
+          </h1>
+        </div>
 
         <p class="hero-subtitle">
           Aqui você encontra as melhores peças do mercado, com <span class="bold">alta qualidade e preço justo</span>, garantindo sucesso na revenda.
         </p>
-      </div>
 
-      <a href="https://chat.whatsapp.com/Il3YTM8EQwyLqnJhrzA70o?mode=gi_t" class="cta-button">
-        ENTRAR NO GRUPO VIP! →
-      </a>
+        <a href="https://chat.whatsapp.com/Il3YTM8EQwyLqnJhrzA70o?mode=gi_t" class="cta-button">
+          ENTRAR NO GRUPO VIP! →
+        </a>
+      </div>
     </div>
 
     <div class="stats">
