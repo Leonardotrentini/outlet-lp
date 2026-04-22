@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const { Redis } = require('@upstash/redis');
 
 const COUNTER_KEY = 'outlet-lp:wa-rotator';
@@ -8,6 +9,12 @@ const WA_URLS = [
   'https://wa.me/5511934677186?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20gostaria%20e%20comprar%20no%20atacado!',
 ];
 
+function redirectRandom(res, n, tag) {
+  const index = crypto.randomInt(0, n);
+  res.setHeader('X-Outlet-WhatsApp', tag + index);
+  return res.redirect(302, WA_URLS[index]);
+}
+
 module.exports = async (req, res) => {
   if (req.method !== 'GET' && req.method !== 'HEAD') {
     return res.status(405).end();
@@ -15,18 +22,17 @@ module.exports = async (req, res) => {
   const n = WA_URLS.length;
   const url = process.env.UPSTASH_REDIS_REST_URL;
   const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  // Sem Redis: reparte entre os dois (aleatório por clique) — nunca fixar só no primeiro.
   if (!url || !token) {
-    res.setHeader('X-Outlet-WhatsApp', 'fallback-config');
-    return res.redirect(302, WA_URLS[0]);
+    return redirectRandom(res, n, 'fallback-rnd-');
   }
   try {
     const redis = new Redis({ url, token });
     const id = await redis.incr(COUNTER_KEY);
     const index = (id - 1) % n;
-    res.setHeader('X-Outlet-WhatsApp', `rotate-${index}`);
+    res.setHeader('X-Outlet-WhatsApp', 'rotate-' + index);
     return res.redirect(302, WA_URLS[index]);
   } catch (e) {
-    res.setHeader('X-Outlet-WhatsApp', 'fallback-error');
-    return res.redirect(302, WA_URLS[0]);
+    return redirectRandom(res, n, 'err-rnd-');
   }
 };
