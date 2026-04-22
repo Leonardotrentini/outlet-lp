@@ -348,7 +348,7 @@ nav {
           Aqui você encontra as melhores peças do mercado, com <span class="bold">alta qualidade e preço justo</span>, garantindo sucesso na revenda.
         </p>
 
-        <a href="#" id="whatsappButton" class="cta-button">
+        <a href="/api/wa" id="whatsappButton" class="cta-button" rel="noopener noreferrer">
           SOLICITAR CATÁLOGO AGORA! →
         </a>
       </div>
@@ -398,18 +398,4 @@ nav {
   <noscript><img height="1" width="1" style="display:none" alt=""
   src="https://www.facebook.com/tr?id=881981060699779&ev=PageView&noscript=1"
   /></noscript>
-  <script>
-    const whatsappLinks = [
-      'https://wa.me/5511910532881?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20queria%20comprar%20no%20atacado!',
-      'https://wa.me/5511934677186?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20gostaria%20e%20comprar%20no%20atacado!'
-    ];
-    let currentIndex = parseInt(localStorage.getItem('wkRotatorIndex') || '0');
-    document.getElementById('whatsappButton').addEventListener('click', function(e) {
-      e.preventDefault();
-      window.location.href = whatsappLinks[currentIndex];
-      currentIndex = (currentIndex + 1) % whatsappLinks.length;
-      localStorage.setItem('wkRotatorIndex', currentIndex);
-    });
-  </script>
-
 </body></html>
